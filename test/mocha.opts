@@ -1,4 +1,0 @@
---require chai
---require test/support/env
---reporter spec
---ui bdd

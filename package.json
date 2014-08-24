@@ -1,35 +1,38 @@
 {
   "name": "viewports",
+  "private": true,
   "version": "0.0.1",
-  "description": "Windows into your soul.",
-  "author": "kmchugh",
+  "description": "viewport elements",
+  "repository": "https://github.com/kmchugh/viewports",
   "license": "MIT",
-  "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-connect": "~0.7.0",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-uglify": "~0.4.0",
-    "grunt-contrib-watch": "~0.6.0",
-    "grunt-conventional-changelog": "~1.1.0",
-    "grunt-karma": "~0.8.0",
-    "grunt-ngmin": "0.0.3",
-    "karma": "~0.12.0",
-    "karma-chrome-launcher": "~0.1.1",
-    "karma-coffee-preprocessor": "~0.2.1",
-    "karma-firefox-launcher": "~0.1.2",
-    "karma-html2js-preprocessor": "~0.1.0",
-    "karma-jasmine": "~0.1.4",
-    "karma-phantomjs-launcher": "~0.1.1",
-    "karma-requirejs": "~0.2.0",
-    "karma-script-launcher": "~0.1.0",
-    "load-grunt-tasks": "~0.4.0",
-    "requirejs": "~2.1.9"
+    "karma": "*",
+    "karma-jasmine" : "*",
+    "protractor": "~0.20.1",
+    "http-server": "^0.6.1",
+    "bower": "^1.3.1",
+    "shelljs": "^0.2.6",
+    "karma-junit-reporter": "^0.2.2",
+    "karma-ng-html2js-preprocessor": "~0.1",
+    "karma-chrome-launcher" : "*",
+    "karma-firefox-launcher" : "*"
   },
-  "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kmchugh/viewports.git"
+  "scripts": {
+    "postinstall": "bower install",
+
+    "prestart": "npm install",
+    "start": "http-server -a localhost -p 8000",
+
+    "pretest": "npm install",
+    "test": "node_modules/karma/bin/karma start test/karma.conf.js",
+    "test-single-run": "karma start test/karma.conf.js  --single-run",
+
+    "preupdate-webdriver": "npm install",
+    "update-webdriver": "webdriver-manager update",
+
+    "preprotractor": "npm run update-webdriver",
+    "protractor": "protractor test/protractor-conf.js",
+
+    "update-index-async": "node -e \"require('shelljs/global'); sed('-i', /\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/, '//@@NG_LOADER_START@@\\n' + cat('app/bower_components/angular-loader/angular-loader.min.js') + '\\n//@@NG_LOADER_END@@', 'app/index-async.html');\""
   }
 }

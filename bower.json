@@ -1,27 +1,15 @@
 {
   "name": "viewports",
+  "private": true,
   "version": "0.0.1",
-  "description": "Windows into your soul.",
-  "author": "kmchugh",
+  "description": "viewport elements",
+  "repository": "https://github.com/kmchugh/viewports",
   "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "out",
-    "test*",
-    "demo*",
-    "gruntFile.js",
-    "package.json"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kmchugh/viewports.git"
-  },
   "dependencies": {
-    "angular": "^1"
-  },
-  "devDependencies": {
-    "angular-mocks": "^1"
+    "angular": "1.2.x",
+    "angular-route": "1.2.x",
+    "angular-loader": "1.2.x",
+    "angular-mocks": "~1.2.x",
+    "html5-boilerplate": "~4.3.0"
   }
 }
